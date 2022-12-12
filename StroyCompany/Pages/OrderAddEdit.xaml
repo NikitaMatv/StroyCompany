@@ -1,0 +1,26 @@
+﻿<Page x:Class="StroyCompany.Pages.OrderAddEdit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StroyCompany.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OrderAddEdit">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock  >Название</TextBlock>
+            <TextBox  x:Name="TbName" Width="200"></TextBox>
+            <TextBlock  >Адрес</TextBlock>
+            <TextBox  x:Name="TbAdress" Width="200"></TextBox>
+            <TextBlock  >Дата заказа</TextBlock>
+            <DatePicker Width="200"></DatePicker>
+            <TextBlock  x:Name="TbDiscription"  >Описание</TextBlock>
+            <TextBox Width="200"></TextBox>
+            <TextBlock  >Вид работ</TextBlock>
+            <ComboBox x:Name="CBtype" Width="200"></ComboBox>
+            <Button Click="Button_Click">Сохранить</Button>
+        </StackPanel>
+    </Grid>
+</Page>
