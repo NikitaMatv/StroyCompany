@@ -17,37 +17,36 @@ using System.Windows.Shapes;
 namespace StroyCompany.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для EmployeePage.xaml
+    /// Логика взаимодействия для ClientPage.xaml
     /// </summary>
-    public partial class EmployeePage : Page
+    public partial class ClientPage : Page
     {
-        public EmployeePage()
+        public ClientPage()
         {
             InitializeComponent();
             if (App.LoggedEmployee.Role_Id == 3)
             {
-                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Id != App.LoggedEmployee.Id && x.Role_Id == 4).ToList();
+                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).ToList();
                 AddBt.Visibility = Visibility.Visible;
                 RedBr.Visibility = Visibility.Visible;
             }
             else
             {
-                 LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id !=2).ToList();
+                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).ToList();
                 AddBt.Visibility = Visibility.Visible;
                 RedBr.Visibility = Visibility.Visible;
                 DelBt.Visibility = Visibility.Visible;
             }
-           
         }
         private void AddBt_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new EmployeeAddEdintPages(new Employee()));
+            NavigationService.Navigate(new ClientAddEditPage(new Employee()));
         }
 
         private void RedBr_Click(object sender, RoutedEventArgs e)
         {
             var selectedorder = LVEmployee.SelectedItem as Employee;
-            NavigationService.Navigate(new EmployeeAddEdintPages(selectedorder));
+            NavigationService.Navigate(new ClientAddEditPage(selectedorder));
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -57,11 +56,11 @@ namespace StroyCompany.Pages
         {
             if (string.IsNullOrWhiteSpace(TbSelected.Text))
             {
-                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id != 2).ToList();
+                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).ToList();
             }
             else
             {
-                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id != 2).Where(a => a.Name.ToLower().Contains(TbSelected.Text.ToLower()) || a.Surname.ToLower().Contains(TbSelected.Text.ToLower())).ToList();
+                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).Where(a => a.Name.ToLower().Contains(TbSelected.Text.ToLower()) || a.Surname.ToLower().Contains(TbSelected.Text.ToLower())).ToList();
             }
 
         }

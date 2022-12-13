@@ -9,17 +9,20 @@
       Title="OrderAddEdit">
 
     <Grid>
+        <TextBlock FontSize="30" HorizontalAlignment="Center" Margin="-90">Заказ</TextBlock>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock  >Название</TextBlock>
-            <TextBox  x:Name="TbName" Width="200"></TextBox>
+            <TextBox Text="{Binding Name}"  x:Name="TbName" Width="200"></TextBox>
             <TextBlock  >Адрес</TextBlock>
-            <TextBox  x:Name="TbAdress" Width="200"></TextBox>
+            <TextBox Text="{Binding Address}"  x:Name="TbAdress" Width="200"></TextBox>
             <TextBlock  >Дата заказа</TextBlock>
-            <DatePicker Width="200"></DatePicker>
+            <DatePicker  SelectedDate="{Binding Date}"  Width="200"></DatePicker>
             <TextBlock  x:Name="TbDiscription"  >Описание</TextBlock>
-            <TextBox Width="200"></TextBox>
+            <TextBox Text="{Binding Description}" Width="200"></TextBox>
             <TextBlock  >Вид работ</TextBlock>
-            <ComboBox x:Name="CBtype" Width="200"></ComboBox>
+            <ComboBox x:Name="CbTypes" SelectedItem="{Binding TypeOreder}" DisplayMemberPath="Name" Background="#fcca12" Foreground="Black"/>
+            <TextBlock  x:Name="TbPrise">Цена</TextBlock>
+            <TextBox Text="{Binding Price}" Width="200"></TextBox>
             <Button Click="Button_Click">Сохранить</Button>
         </StackPanel>
     </Grid>

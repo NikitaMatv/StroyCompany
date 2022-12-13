@@ -16,11 +16,11 @@
             <ColumnDefinition>
             </ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock FontSize="30" HorizontalAlignment="Center" Margin="-90" Grid.ColumnSpan="2">Главное меню</TextBlock>
+
         <StackPanel Grid.Column="0">
-            <Button x:Name="BtOreder" Click="BtOrder_Click">Список заказов</Button>
-            <Button x:Name="BtEmployee" Click="BtEmployee_Click">Список сотрудников</Button>
-            <Button x:Name="BtClient" Click="BtClient_Click">Список клиентов</Button>
+            <Button x:Name="BtOreder" Click="BtOrder_Click" Visibility="Collapsed">Список заказов</Button>
+            <Button x:Name="BtEmployee" Click="BtEmployee_Click" Visibility="Collapsed">Список сотрудников</Button>
+            <Button x:Name="BtClient" Click="BtClient_Click" Visibility="Collapsed">Список клиентов</Button>
         </StackPanel>
         <Frame Grid.Column="1" x:Name="MenuFrame"></Frame>
     </Grid>

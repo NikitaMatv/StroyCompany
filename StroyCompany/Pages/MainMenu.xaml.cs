@@ -23,6 +23,29 @@ namespace StroyCompany.Pages
         public MainMenu()
         {
             InitializeComponent();
+            if (App.LoggedEmployee.Role_Id == 1)
+            {
+
+                BtClient.Visibility = Visibility.Visible;
+                BtEmployee.Visibility = Visibility.Visible;
+                BtOreder.Visibility = Visibility.Visible;   
+            }
+            if (App.LoggedEmployee.Role_Id == 2)
+            {
+                BtOreder.Visibility = Visibility.Visible;
+                MenuFrame.Navigate(new OrderPage());
+            }
+            if (App.LoggedEmployee.Role_Id == 3)
+            {
+                BtEmployee.Visibility = Visibility.Visible;
+                BtClient.Visibility = Visibility.Visible;
+                MenuFrame.Navigate(new EmployeePage());
+            }
+            if (App.LoggedEmployee.Role_Id == 4)
+            {
+                BtOreder.Visibility = Visibility.Visible;
+                MenuFrame.Navigate(new OrderPage());
+            }
         }
 
         private void BtOrder_Click(object sender, RoutedEventArgs e)
@@ -32,11 +55,12 @@ namespace StroyCompany.Pages
 
         private void BtEmployee_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuFrame.Navigate(new EmployeePage());
         }
 
         private void BtClient_Click(object sender, RoutedEventArgs e)
         {
+            MenuFrame.Navigate(new ClientPage());
 
         }
     }

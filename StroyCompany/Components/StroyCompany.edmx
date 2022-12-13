@@ -58,6 +58,13 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="TypeOreder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK_Employee_Department">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
@@ -94,12 +101,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Order_TypeOreder">
+          <End Role="TypeOreder" Type="Self.TypeOreder" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOreder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище StroyCompanyModelContainer">
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOreder" EntityType="Self.TypeOreder" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="Employee" EntitySet="Employee" />
@@ -110,6 +130,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
             <End Role="Employee" EntitySet="Employee" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_TypeOreder" Association="Self.FK_Order_TypeOreder">
+            <End Role="TypeOreder" EntitySet="TypeOreder" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
         </EntityContainer>
@@ -203,6 +227,11 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
+          <EntitySet Name="TypeOreder" EntityType="StroyCompanyModel.TypeOreder" />
+          <AssociationSet Name="FK_Order_TypeOreder" Association="StroyCompanyModel.FK_Order_TypeOreder">
+            <End Role="TypeOreder" EntitySet="TypeOreder" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Order">
           <Key>
@@ -218,6 +247,7 @@
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employee" Relationship="StroyCompanyModel.FK_Order_Employee" FromRole="Order" ToRole="Employee" />
+          <NavigationProperty Name="TypeOreder" Relationship="StroyCompanyModel.FK_Order_TypeOreder" FromRole="Order" ToRole="TypeOreder" />
         </EntityType>
         <Association Name="FK_Order_Employee">
           <End Type="StroyCompanyModel.Employee" Role="Employee" Multiplicity="0..1" />
@@ -228,6 +258,26 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TypeOreder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="StroyCompanyModel.FK_Order_TypeOreder" FromRole="TypeOreder" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_Order_TypeOreder">
+          <End Type="StroyCompanyModel.TypeOreder" Role="TypeOreder" Multiplicity="0..1" />
+          <End Type="StroyCompanyModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOreder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Type_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -291,6 +341,14 @@
                 <ScalarProperty Name="Square" ColumnName="Square" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOreder">
+            <EntityTypeMapping TypeName="StroyCompanyModel.TypeOreder">
+              <MappingFragment StoreEntitySet="TypeOreder">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

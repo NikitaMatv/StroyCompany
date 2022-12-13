@@ -30,5 +30,6 @@ namespace StroyCompany.Components
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<TypeOreder> TypeOreder { get; set; }
     }
 }

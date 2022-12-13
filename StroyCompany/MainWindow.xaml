@@ -5,14 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StroyCompany"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="900">
+         Icon="Resource/LOGO.png" 
+        Title="StroyCompany" Height="600" Width="900"
+        ResizeMode="CanMinimize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="6*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Background="DarkOrange"></StackPanel>
+        <StackPanel Grid.Row="0"  Background="Gray">
+
+            <Image Source="Resource/LOGO.png" Width="100" HorizontalAlignment="Left" Margin="20 10 0 0"></Image>
+        </StackPanel>
         <Frame Grid.Row="1" x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
         <StackPanel Grid.Row="2" Background="Gray"></StackPanel>
     </Grid>

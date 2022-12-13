@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StroyCompany.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,54 @@ namespace StroyCompany.Pages
         public OrderPage()
         {
             InitializeComponent();
-            LVOrder.ItemsSource = App.DB.Order.ToList();
+            if(App.LoggedEmployee.Role_Id == 2)
+            {
+                LVOrder.ItemsSource = App.DB.Order.Where(x => x.Employee_Id == App.LoggedEmployee.Id).ToList();
+                AddBt.Visibility = Visibility.Visible;
+                RedBr.Visibility = Visibility.Visible;
+            }
+            else if (App.LoggedEmployee.Role_Id == 4)
+            {
+                LVOrder.ItemsSource = App.DB.Order.ToList();
+            }
+            else
+            {
+                LVOrder.ItemsSource = App.DB.Order.ToList();
+                AddBt.Visibility = Visibility.Visible;
+                RedBr.Visibility = Visibility.Visible;
+                DelBt.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void AddBt_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new OrderAddEdit(new Order()));
+        }
+
+        private void RedBr_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedorder = LVOrder.SelectedItem as Order;
+            NavigationService.Navigate(new OrderAddEdit(selectedorder));
+        }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+        }
+        private void Refresh()
+        {
+            if (string.IsNullOrWhiteSpace(TbSelected.Text))
+            {
+                LVOrder.ItemsSource = App.DB.Order.ToList();
+            }
+            else
+            {
+                LVOrder.ItemsSource = App.DB.Order.Where(a => a.Name.ToLower().Contains(TbSelected.Text.ToLower())
+                || a.TypeOreder.Name.ToLower().Contains(TbSelected.Text.ToLower())).ToList();
+            }
+        }
+        private void TbSelected_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Refresh();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StroyCompany.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,27 +13,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using StroyCompany.Components;
-using StroyCompany.Pages;
+
 namespace StroyCompany.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для EmployeeAddEdintPages.xaml
+    /// Логика взаимодействия для ClientAddEditPage.xaml
     /// </summary>
-    public partial class EmployeeAddEdintPages : Page
+    public partial class ClientAddEditPage : Page
     {
         Employee employeecontext;
-        public EmployeeAddEdintPages(Employee employee)
+        public ClientAddEditPage(Employee employee)
         {
             InitializeComponent();
-            if(App.LoggedEmployee.Role_Id == 3)
-            {
-                CBRole.ItemsSource = App.DB.Role.Where(x => x.Id == 4).ToList();
-            }
-            else
-            {
-                CBRole.ItemsSource = App.DB.Role.Where(x => x.Id != 2 && x.Id !=1).ToList();
-            }
+            CBRole.ItemsSource = App.DB.Role.Where(x => x.Id == 2).ToList();
             employeecontext = employee;
             DataContext = employeecontext;
         }
@@ -40,7 +33,7 @@ namespace StroyCompany.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var erormasage = "";
-         if(TbLogin == null)
+            if (TbLogin == null)
             {
                 erormasage += "Заполните логин \n";
             }
@@ -64,7 +57,7 @@ namespace StroyCompany.Pages
             {
                 erormasage += "Выберите роль \n";
             }
-            if (employeecontext.Id == 0)
+            if(employeecontext.Id == 0)
             {
                 App.DB.Employee.Add(employeecontext);
             }

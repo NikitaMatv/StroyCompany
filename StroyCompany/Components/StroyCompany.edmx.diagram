@@ -11,8 +11,10 @@
         <EntityTypeShape EntityType="StroyCompanyModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
         <AssociationConnector Association="StroyCompanyModel.FK_Employee_Department" ManuallyRouted="false" />
         <AssociationConnector Association="StroyCompanyModel.FK_Employee_Role" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="StroyCompanyModel.Order" Width="1.5" PointX="5.25" PointY="1.25" />
+        <EntityTypeShape EntityType="StroyCompanyModel.Order" Width="1.5" PointX="5.25" PointY="1.125" />
         <AssociationConnector Association="StroyCompanyModel.FK_Order_Employee" />
+        <EntityTypeShape EntityType="StroyCompanyModel.TypeOreder" Width="1.5" PointX="5.375" PointY="5.875" />
+        <AssociationConnector Association="StroyCompanyModel.FK_Order_TypeOreder" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

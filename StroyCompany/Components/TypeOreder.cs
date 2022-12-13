@@ -12,19 +12,18 @@ namespace StroyCompany.Components
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class TypeOreder
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TypeOreder()
+        {
+            this.Order = new HashSet<Order>();
+        }
+    
         public int Id { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<int> Price { get; set; }
-        public Nullable<int> Square { get; set; }
-        public Nullable<int> Type_Id { get; set; }
-        public string Description { get; set; }
-        public Nullable<int> Employee_Id { get; set; }
-        public string Address { get; set; }
         public string Name { get; set; }
     
-        public virtual Employee Employee { get; set; }
-        public virtual TypeOreder TypeOreder { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Order { get; set; }
     }
 }
