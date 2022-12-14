@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StroyCompany"
         mc:Ignorable="d"
          Icon="Resource/LOGO.png" 
-        Title="StroyCompany" Height="600" Width="900"
+        Title="StroyCompany - STROIM" Height="600" Width="900"
         ResizeMode="CanMinimize">
     <Grid>
         <Grid.RowDefinitions>
@@ -14,11 +14,12 @@
             <RowDefinition Height="6*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0"  Background="Gray">
+        <StackPanel Grid.Row="0"  Background="LightGray">
 
             <Image Source="Resource/LOGO.png" Width="100" HorizontalAlignment="Left" Margin="20 10 0 0"></Image>
+            <TextBlock Margin="35 0 0 0" FontSize="20">STROIM</TextBlock>
         </StackPanel>
         <Frame Grid.Row="1" x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
-        <StackPanel Grid.Row="2" Background="Gray"></StackPanel>
+        <StackPanel Grid.Row="2" Background="LightGray"></StackPanel>
     </Grid>
 </Window>

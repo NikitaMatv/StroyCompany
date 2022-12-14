@@ -10,7 +10,8 @@
 
     <Grid>
         <TextBlock FontSize="30" HorizontalAlignment="Center" Margin="-90">Заказ</TextBlock>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock  >Название</TextBlock>
             <TextBox Text="{Binding Name}"  x:Name="TbName" Width="200"></TextBox>
             <TextBlock  >Адрес</TextBlock>
@@ -20,10 +21,17 @@
             <TextBlock  x:Name="TbDiscription"  >Описание</TextBlock>
             <TextBox Text="{Binding Description}" Width="200"></TextBox>
             <TextBlock  >Вид работ</TextBlock>
-            <ComboBox x:Name="CbTypes" SelectedItem="{Binding TypeOreder}" DisplayMemberPath="Name" Background="#fcca12" Foreground="Black"/>
+            <ComboBox x:Name="CbTypes" SelectedItem="{Binding TypeOreder}" DisplayMemberPath="Name" />
             <TextBlock  x:Name="TbPrise">Цена</TextBlock>
             <TextBox Text="{Binding Price}" Width="200"></TextBox>
+            <TextBlock  >Сотрудник</TextBlock>
+            <ComboBox x:Name="CbEmployee" SelectedItem="{Binding Employee}" DisplayMemberPath="Name"/>
             <Button Click="Button_Click">Сохранить</Button>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Center" Margin="50">
+                <Image Source="{Binding Image}" Width=" 200" Height="200"/>
+                <Button x:Name="BtImage" Click="BtImage_Click"> добавить фото</Button>
+        </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

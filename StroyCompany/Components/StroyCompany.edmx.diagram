@@ -6,16 +6,16 @@
     <edmx:Diagrams>
       <Diagram DiagramId="a082fd2e7b254974a43755310fb3c707" Name="Diagram1">
         <EntityTypeShape EntityType="StroyCompanyModel.Department" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="StroyCompanyModel.Employee" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="StroyCompanyModel.Role" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="StroyCompanyModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <AssociationConnector Association="StroyCompanyModel.FK_Employee_Department" ManuallyRouted="false" />
-        <AssociationConnector Association="StroyCompanyModel.FK_Employee_Role" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="StroyCompanyModel.Order" Width="1.5" PointX="5.25" PointY="1.125" />
-        <AssociationConnector Association="StroyCompanyModel.FK_Order_Employee" />
         <EntityTypeShape EntityType="StroyCompanyModel.TypeOreder" Width="1.5" PointX="5.375" PointY="5.875" />
+        <EntityTypeShape EntityType="StroyCompanyModel.Employee" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="StroyCompanyModel.FK_Employee_Department" />
+        <AssociationConnector Association="StroyCompanyModel.FK_Employee_Role" />
+        <EntityTypeShape EntityType="StroyCompanyModel.Order" Width="1.5" PointX="7.625" PointY="2.375" />
+        <AssociationConnector Association="StroyCompanyModel.FK_Order_Employee" />
         <AssociationConnector Association="StroyCompanyModel.FK_Order_TypeOreder" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -10,6 +10,7 @@
 
     <Grid>
         <TextBlock FontSize="30" HorizontalAlignment="Center" Margin="-90">Сотрудник</TextBlock>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock>Имя</TextBlock>
             <TextBox  x:Name="TbName" Text="{Binding Name}" Width="200"></TextBox>
@@ -26,6 +27,11 @@
             <TextBlock >Пароль</TextBlock>
             <TextBox  x:Name="TbPassword" Width="200" Text="{Binding Password}"></TextBox>
             <Button Click="Button_Click">Сохранить</Button>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Center" Margin="50">
+            <Image Source="{Binding Image}" Width=" 200" Height="200"/>
+            <Button x:Name="BtImage" Click="BtImage_Click">добавить фото</Button>
+        </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

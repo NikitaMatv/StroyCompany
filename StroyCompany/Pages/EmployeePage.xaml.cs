@@ -26,13 +26,13 @@ namespace StroyCompany.Pages
             InitializeComponent();
             if (App.LoggedEmployee.Role_Id == 3)
             {
-                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Id != App.LoggedEmployee.Id && x.Role_Id == 4).ToList();
+                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Id != App.LoggedEmployee.Id && x.Role_Id == 4).Where(x => x.IsDel != 1).ToList();
                 AddBt.Visibility = Visibility.Visible;
                 RedBr.Visibility = Visibility.Visible;
             }
             else
             {
-                 LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id !=2).ToList();
+                 LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id !=2).Where(x => x.IsDel != 1).ToList();
                 AddBt.Visibility = Visibility.Visible;
                 RedBr.Visibility = Visibility.Visible;
                 DelBt.Visibility = Visibility.Visible;
@@ -57,18 +57,48 @@ namespace StroyCompany.Pages
         {
             if (string.IsNullOrWhiteSpace(TbSelected.Text))
             {
-                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id != 2).ToList();
+                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id != 2).Where(x => x.IsDel != 1).ToList();
             }
             else
             {
-                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id != 2).Where(a => a.Name.ToLower().Contains(TbSelected.Text.ToLower()) || a.Surname.ToLower().Contains(TbSelected.Text.ToLower())).ToList();
+                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id != 2).Where(x => x.IsDel != 1).Where(a => a.Name.ToLower().Contains(TbSelected.Text.ToLower()) || a.Surname.ToLower().Contains(TbSelected.Text.ToLower())).ToList();
             }
 
         }
+        private void DelBt_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedclient = LVEmployee.SelectedItem as Employee;
+            if (selectedclient.Role_Id == 1)
+            {
+                MessageBox.Show("Директора нельзя уволить");
+                return;
+            }
+            else
+            {
 
+
+                selectedclient.IsDel = 1;
+                App.DB.SaveChanges();
+                Refreh();
+                if (App.LoggedEmployee.Role_Id == 3)
+                {
+                    LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Id != App.LoggedEmployee.Id && x.Role_Id == 4).Where(x => x.IsDel != 1).ToList();
+                    AddBt.Visibility = Visibility.Visible;
+                    RedBr.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id != 2).Where(x => x.IsDel != 1).ToList();
+                    AddBt.Visibility = Visibility.Visible;
+                    RedBr.Visibility = Visibility.Visible;
+                    DelBt.Visibility = Visibility.Visible;
+                }
+            }
+        }
         private void TbSelected_TextChanged(object sender, TextChangedEventArgs e)
         {
             Refreh();
         }
+
     }
 }

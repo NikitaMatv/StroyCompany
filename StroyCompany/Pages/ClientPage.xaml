@@ -20,10 +20,9 @@
             <StackPanel  Orientation="Horizontal" Margin="200 0 0 0" HorizontalAlignment="Right">
                 <Button x:Name="AddBt" Click="AddBt_Click" Visibility="Collapsed">Добавить</Button>
                 <Button x:Name="RedBr" Click="RedBr_Click" Visibility="Collapsed">Редактировать</Button>
-                <Button x:Name="DelBt" Visibility="Collapsed">Удалить</Button>
             </StackPanel>
         </StackPanel>
-        <ListView x:Name="LVEmployee" Grid.Row="1">
+        <ListView x:Name="LVClient" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -33,6 +32,7 @@
                         <TextBlock Text="{Binding Password, StringFormat='Пароль: {0}'}" Foreground="Black" FontSize="15" />
                         <TextBlock Text="{Binding Role.Name, StringFormat='Должность: {0}'}" Foreground="Black" FontSize="15" />
                         <TextBlock Text="{Binding Phone_number, StringFormat='Номер телефона: {0}'}" Foreground="Black" FontSize="15" />
+                        <Image Source="{Binding Image}" Width=" 200" Height="200"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

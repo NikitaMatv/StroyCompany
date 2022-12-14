@@ -1,6 +1,8 @@
-﻿using StroyCompany.Components;
+﻿using Microsoft.Win32;
+using StroyCompany.Components;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,6 +65,16 @@ namespace StroyCompany.Pages
             }
             App.DB.SaveChanges();
             NavigationService.GoBack();
+        }
+        private void BtImage_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog();
+            if (dialog.ShowDialog().GetValueOrDefault())
+            {
+                employeecontext.Image = File.ReadAllBytes(dialog.FileName);
+                DataContext = null;
+                DataContext = employeecontext;
+            }
         }
     }
 }

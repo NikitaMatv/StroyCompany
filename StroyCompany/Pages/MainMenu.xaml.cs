@@ -28,22 +28,26 @@ namespace StroyCompany.Pages
 
                 BtClient.Visibility = Visibility.Visible;
                 BtEmployee.Visibility = Visibility.Visible;
-                BtOreder.Visibility = Visibility.Visible;   
+                BtOrder.Visibility = Visibility.Visible;
+                BtOrderCompl.Visibility = Visibility.Visible;
+                BtEmployeeDel.Visibility = Visibility.Visible;
             }
             if (App.LoggedEmployee.Role_Id == 2)
             {
-                BtOreder.Visibility = Visibility.Visible;
+                BtOrder.Visibility = Visibility.Visible;
                 MenuFrame.Navigate(new OrderPage());
             }
             if (App.LoggedEmployee.Role_Id == 3)
             {
                 BtEmployee.Visibility = Visibility.Visible;
                 BtClient.Visibility = Visibility.Visible;
+                BtEmployeeDel.Visibility = Visibility.Visible;
                 MenuFrame.Navigate(new EmployeePage());
             }
             if (App.LoggedEmployee.Role_Id == 4)
             {
-                BtOreder.Visibility = Visibility.Visible;
+                BtOrder.Visibility = Visibility.Visible;
+                BtOrderCompl.Visibility = Visibility.Visible;
                 MenuFrame.Navigate(new OrderPage());
             }
         }
@@ -62,6 +66,16 @@ namespace StroyCompany.Pages
         {
             MenuFrame.Navigate(new ClientPage());
 
+        }
+
+        private void BtOreerCompl_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFrame.Navigate(new OrderComplitPage());
+        }
+
+        private void BtEmployeeDel_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFrame.Navigate(new EmployeeDelPage());
         }
     }
 }

@@ -26,17 +26,17 @@ namespace StroyCompany.Pages
             InitializeComponent();
             if(App.LoggedEmployee.Role_Id == 2)
             {
-                LVOrder.ItemsSource = App.DB.Order.Where(x => x.Employee_Id == App.LoggedEmployee.Id).ToList();
+                LVOrder.ItemsSource = App.DB.Order.Where(x => x.IsCompl != 1).Where(x => x.Employee_Id == App.LoggedEmployee.Id).ToList();
                 AddBt.Visibility = Visibility.Visible;
                 RedBr.Visibility = Visibility.Visible;
             }
             else if (App.LoggedEmployee.Role_Id == 4)
             {
-                LVOrder.ItemsSource = App.DB.Order.ToList();
+                LVOrder.ItemsSource = App.DB.Order.Where(x => x.IsCompl != 1).ToList();
             }
             else
             {
-                LVOrder.ItemsSource = App.DB.Order.ToList();
+                LVOrder.ItemsSource = App.DB.Order.Where(x => x.IsCompl != 1).ToList();
                 AddBt.Visibility = Visibility.Visible;
                 RedBr.Visibility = Visibility.Visible;
                 DelBt.Visibility = Visibility.Visible;
@@ -67,6 +67,30 @@ namespace StroyCompany.Pages
             {
                 LVOrder.ItemsSource = App.DB.Order.Where(a => a.Name.ToLower().Contains(TbSelected.Text.ToLower())
                 || a.TypeOreder.Name.ToLower().Contains(TbSelected.Text.ToLower())).ToList();
+            }
+        }
+        private void DelBt_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedclient = LVOrder.SelectedItem as Order;
+            selectedclient.IsCompl = 1;
+            App.DB.SaveChanges();
+            Refresh();
+            if (App.LoggedEmployee.Role_Id == 2)
+            {
+                LVOrder.ItemsSource = App.DB.Order.Where(x => x.IsCompl != 1).Where(x => x.Employee_Id == App.LoggedEmployee.Id).ToList();
+                AddBt.Visibility = Visibility.Visible;
+                RedBr.Visibility = Visibility.Visible;
+            }
+            else if (App.LoggedEmployee.Role_Id == 4)
+            {
+                LVOrder.ItemsSource = App.DB.Order.Where(x => x.IsCompl != 1).ToList();
+            }
+            else
+            {
+                LVOrder.ItemsSource = App.DB.Order.Where(x => x.IsCompl != 1).ToList();
+                AddBt.Visibility = Visibility.Visible;
+                RedBr.Visibility = Visibility.Visible;
+                DelBt.Visibility = Visibility.Visible;
             }
         }
         private void TbSelected_TextChanged(object sender, TextChangedEventArgs e)
