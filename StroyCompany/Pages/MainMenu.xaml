@@ -21,8 +21,11 @@
             <Button x:Name="BtOrder" Click="BtOrder_Click" Visibility="Collapsed">Список заказов</Button>
             <Button x:Name="BtEmployee" Click="BtEmployee_Click" Visibility="Collapsed">Список сотрудников</Button>
             <Button x:Name="BtClient" Click="BtClient_Click" Visibility="Collapsed">Список клиентов</Button>
-            <Button x:Name="BtOrderCompl" Click="BtOreerCompl_Click" Visibility="Collapsed">Список выполненных заказов</Button>
-            <Button x:Name="BtEmployeeDel" Click="BtEmployeeDel_Click" Visibility="Collapsed">Список уволенных сотрудников</Button>
+            <Button x:Name="BtOrderCompl" Click="BtOreerCompl_Click" Visibility="Collapsed">
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" >Список выполненных заказов</TextBlock></Button>
+            <Button x:Name="BtEmployeeDel" Click="BtEmployeeDel_Click" Visibility="Collapsed">
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" >Список уволенных сотрудников</TextBlock>
+            </Button> 
         </StackPanel>
         <Frame Grid.Column="1" x:Name="MenuFrame"></Frame>
     </Grid>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -74,6 +75,21 @@ namespace StroyCompany.Pages
                 employeecontext.Image = File.ReadAllBytes(dialog.FileName);
                 DataContext = null;
                 DataContext = employeecontext;
+            }
+        }
+        private void TbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Regex.IsMatch(e.Text, @"[A-zА-я]") == false)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TbPhone_number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Regex.IsMatch(e.Text, @"[0-9]") == false)
+            {
+                e.Handled = true;
             }
         }
     }

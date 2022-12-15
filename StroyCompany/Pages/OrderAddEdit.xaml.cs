@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -77,6 +78,15 @@ namespace StroyCompany.Pages
                 ordercontext.Image = File.ReadAllBytes(dialog.FileName);
                 DataContext = null;
                 DataContext = ordercontext;
+            }
+        }
+
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+
+            if (Regex.IsMatch(e.Text, @"[0-9]") == false)
+            {
+                e.Handled = true;
             }
         }
     }

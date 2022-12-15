@@ -9,17 +9,17 @@
       Title="ClientAddEditPage">
 
     <Grid>
-        <TextBlock FontSize="30" HorizontalAlignment="Center" Margin="-90">Сотрудник</TextBlock>
+        <TextBlock FontSize="30" HorizontalAlignment="Center"  Margin="-90 -90 0 0">Сотрудник</TextBlock>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock>Имя</TextBlock>
-            <TextBox  x:Name="TbName" Text="{Binding Name}" Width="200"></TextBox>
+                <TextBox  x:Name="TbName" PreviewTextInput="TbName_PreviewTextInput"  Text="{Binding Name}" Width="200"></TextBox>
             <TextBlock  >Фамилия</TextBlock>
-            <TextBox  x:Name="TbSurname" Text="{Binding Surname}" Width="200"></TextBox>
+                <TextBox  x:Name="TbSurname" PreviewTextInput="TbName_PreviewTextInput" Text="{Binding Surname}" Width="200"></TextBox>
             <TextBlock >Отчество</TextBlock>
-            <TextBox  x:Name="TbMeddle_name" Width="200" Text="{Binding Meddle_name}"></TextBox>
+                <TextBox  x:Name="TbMeddle_name" PreviewTextInput="TbName_PreviewTextInput" Width="200" Text="{Binding Meddle_name}"></TextBox>
             <TextBlock >Номер телефона</TextBlock>
-            <TextBox  x:Name="TbPhone_number" Width="200" Text="{Binding Phone_number}"></TextBox>
+            <TextBox  x:Name="TbPhone_number" MaxLength="11" PreviewTextInput="TbPhone_number_PreviewTextInput"  Width="200" Text="{Binding Phone_number}"></TextBox>
             <TextBlock>Должность</TextBlock>
             <ComboBox x:Name="CBRole" Width="200" DisplayMemberPath="Name" SelectedItem="{Binding Role}"></ComboBox>
             <TextBlock >Логин</TextBlock>

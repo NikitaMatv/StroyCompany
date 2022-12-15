@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StroyCompany"
         mc:Ignorable="d"
          Icon="Resource/LOGO.png" 
-        Title="StroyCompany - STROIM" Height="600" Width="900"
+        Title="StroyCompany - STROIM" Height="600" Width="1000"
         ResizeMode="CanMinimize">
     <Grid>
         <Grid.RowDefinitions>
