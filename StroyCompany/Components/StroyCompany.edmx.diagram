@@ -12,8 +12,9 @@
         <EntityTypeShape EntityType="StroyCompanyModel.Employee" Width="1.5" PointX="3" PointY="0.75" />
         <AssociationConnector Association="StroyCompanyModel.FK_Employee_Department" />
         <AssociationConnector Association="StroyCompanyModel.FK_Employee_Role" />
-        <EntityTypeShape EntityType="StroyCompanyModel.Order" Width="1.5" PointX="7.625" PointY="2.375" />
+        <EntityTypeShape EntityType="StroyCompanyModel.Order" Width="1.5" PointX="7.625" PointY="2.125" />
         <AssociationConnector Association="StroyCompanyModel.FK_Order_Employee" />
+        <AssociationConnector Association="StroyCompanyModel.FK_Order_Employee1" />
         <AssociationConnector Association="StroyCompanyModel.FK_Order_TypeOreder" />
         </Diagram>
     </edmx:Diagrams>

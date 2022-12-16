@@ -26,7 +26,7 @@ namespace StroyCompany.Pages
             InitializeComponent();
             if(App.LoggedEmployee.Role_Id == 2)
             {
-                LVOrder.ItemsSource = App.DB.Order.Where(x => x.IsCompl != 1).Where(x => x.Employee_Id == App.LoggedEmployee.Id).ToList();
+                LVOrder.ItemsSource = App.DB.Order.Where(x => x.IsCompl != 1).Where(x => x.Client_Id == App.LoggedEmployee.Id || x.Employee_Id == App.LoggedEmployee.Id).ToList();
                 AddBt.Visibility = Visibility.Visible;
                 RedBr.Visibility = Visibility.Visible;
             }
@@ -61,11 +61,11 @@ namespace StroyCompany.Pages
         {
             if (string.IsNullOrWhiteSpace(TbSelected.Text))
             {
-                LVOrder.ItemsSource = App.DB.Order.ToList();
+                LVOrder.ItemsSource = App.DB.Order.Where(x => x.IsCompl != 1).ToList();
             }
             else
             {
-                LVOrder.ItemsSource = App.DB.Order.Where(a => a.Name.ToLower().Contains(TbSelected.Text.ToLower())
+                LVOrder.ItemsSource = App.DB.Order.Where(x => x.IsCompl != 1).Where(a => a.Name.ToLower().Contains(TbSelected.Text.ToLower())
                 || a.TypeOreder.Name.ToLower().Contains(TbSelected.Text.ToLower())).ToList();
             }
         }

@@ -26,7 +26,9 @@
                 <TextBox Text="{Binding Price}"  PreviewTextInput="TextBox_PreviewTextInput"  Width="200"></TextBox>
             <TextBlock  >Сотрудник</TextBlock>
             <ComboBox x:Name="CbEmployee" SelectedItem="{Binding Employee}" DisplayMemberPath="Name"/>
-            <Button Click="Button_Click">Сохранить</Button>
+                <TextBlock Visibility="Hidden" x:Name="Client" >Клиент</TextBlock>
+                <ComboBox x:Name="CbClient" Visibility="Hidden"  SelectedItem="{Binding Employee}" DisplayMemberPath="Name"/>
+                <Button Click="Button_Click">Сохранить</Button>
         </StackPanel>
         <StackPanel VerticalAlignment="Center" Margin="50">
                 <Image Source="{Binding Image}" Width=" 200" Height="200"/>

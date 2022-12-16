@@ -18,6 +18,7 @@ namespace StroyCompany.Components
         public Employee()
         {
             this.Order = new HashSet<Order>();
+            this.Order1 = new HashSet<Order>();
         }
     
         public int Id { get; set; }
@@ -36,5 +37,7 @@ namespace StroyCompany.Components
         public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Order1 { get; set; }
     }
 }

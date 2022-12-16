@@ -28,6 +28,11 @@ namespace StroyCompany.Pages
         public EmployeeAddEdintPages(Employee employee)
         {
             InitializeComponent();
+            if(App.LoggedEmployee.Role_Id == 1)
+            {
+                CBRole.ItemsSource = App.DB.Role.ToList();
+            }
+            else
             if(App.LoggedEmployee.Role_Id == 3)
             {
                 CBRole.ItemsSource = App.DB.Role.Where(x => x.Id == 4).ToList();

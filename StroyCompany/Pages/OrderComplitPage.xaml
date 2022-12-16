@@ -21,13 +21,17 @@
         <ListView x:Name="LVOrder" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Name, StringFormat='Название: {0}'}" Foreground="Black" FontSize="15"/>
-                        <TextBlock Text="{Binding Address, StringFormat='Адрес: {0}'}" Foreground="Black" FontSize="15"/>
-                        <TextBlock Text="{Binding Date, StringFormat='Дата заказа: dd.MM.yyyy'}" Foreground="Black" FontSize="15" />
-                        <TextBlock Text="{Binding Description, StringFormat='Описание: {0}'}" Foreground="Black" FontSize="15" />
-                        <TextBlock Text="{Binding Type_Id.Name, StringFormat='Вид работ: {0}'}" Foreground="Black" FontSize="15" />
-                        <Image Source="{Binding Image}" Width=" 200" Height="200"/>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel VerticalAlignment="Center" Margin="20">
+                            <TextBlock Text="{Binding Name, StringFormat='Название: {0}'}" Foreground="Black" FontSize="15"/>
+                            <TextBlock Text="{Binding Address, StringFormat='Адрес: {0}'}" Foreground="Black" FontSize="15"/>
+                            <TextBlock Text="{Binding Date, StringFormat='Дата заказа: dd.MM.yyyy'}" Foreground="Black" FontSize="15" />
+                            <TextBlock Text="{Binding Description, StringFormat='Описание: {0}'}" Foreground="Black" FontSize="15" />
+                            <TextBlock Text="{Binding Type_Id.Name, StringFormat='Вид работ: {0}'}" Foreground="Black" FontSize="15" />
+                        </StackPanel>
+                        <StackPanel>
+                            <Image Source="{Binding Image}" Width=" 200" Height="200"/>
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

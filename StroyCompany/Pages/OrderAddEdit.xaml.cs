@@ -28,10 +28,12 @@ namespace StroyCompany.Pages
         public OrderAddEdit(Order order)
         {
             InitializeComponent();
-            CbTypes.ItemsSource = App.DB.TypeOreder.ToList();
-            CbEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 4).ToList();
             ordercontext = order;
             DataContext = ordercontext;
+            CbTypes.ItemsSource = App.DB.TypeOreder.ToList();
+            CbEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 4).ToList();
+            if(App.LoggedEmployee.Role_Id == 2)
+                ordercontext.Client_Id = App.LoggedEmployee.Id;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

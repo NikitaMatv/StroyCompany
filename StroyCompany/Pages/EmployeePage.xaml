@@ -27,9 +27,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <StackPanel>
-                            <Image Source="{Binding Image}" Width=" 200" Height="200"/>
-                        </StackPanel>
+                      
                         <StackPanel VerticalAlignment="Center" Margin="20">
                             <TextBlock Text="{Binding Name, StringFormat='Имя: {0}'}" Foreground="Black" FontSize="15"/>
                             <TextBlock Text="{Binding Surname, StringFormat='Фамилия: {0}'}" Foreground="Black" FontSize="15"/>
@@ -37,6 +35,9 @@
                             <TextBlock Text="{Binding Password, StringFormat='Пароль: {0}'}" Foreground="Black" FontSize="15" />
                             <TextBlock Text="{Binding Role.Name, StringFormat='Должность: {0}'}" Foreground="Black" FontSize="15" />
                             <TextBlock Text="{Binding Phone_number, StringFormat='Номер телефона: {0}'}" Foreground="Black" FontSize="15" />
+                        </StackPanel>
+                        <StackPanel>
+                            <Image Source="{Binding Image}" Width=" 200" Height="200"/>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

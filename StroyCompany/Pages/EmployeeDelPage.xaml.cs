@@ -47,11 +47,11 @@ namespace StroyCompany.Pages
         {
             if (string.IsNullOrWhiteSpace(TbSelected.Text))
             {
-                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id != 2).Where(x => x.IsDel != 1).ToList();
+                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id != 2).Where(x => x.IsDel == 1).ToList();
             }
             else
             {
-                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id != 2).Where(x => x.IsDel != 1).Where(a => a.Name.ToLower().Contains(TbSelected.Text.ToLower()) || a.Surname.ToLower().Contains(TbSelected.Text.ToLower())).ToList();
+                LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id != 2).Where(x => x.IsDel == 1).Where(a => a.Name.ToLower().Contains(TbSelected.Text.ToLower()) || a.Surname.ToLower().Contains(TbSelected.Text.ToLower())).ToList();
             }
 
         }

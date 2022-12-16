@@ -35,6 +35,7 @@ namespace StroyCompany.Pages
             if (App.LoggedEmployee.Role_Id == 2)
             {
                 BtOrder.Visibility = Visibility.Visible;
+                BtOrderCompl.Visibility = Visibility.Visible;
                 MenuFrame.Navigate(new OrderPage());
             }
             if (App.LoggedEmployee.Role_Id == 3)

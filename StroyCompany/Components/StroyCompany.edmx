@@ -44,6 +44,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Image" Type="image" />
           <Property Name="IsCompl" Type="tinyint" />
+          <Property Name="Client_Id" Type="int" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -105,6 +106,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Order_Employee1">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Client_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Order_TypeOreder">
           <End Role="TypeOreder" Type="Self.TypeOreder" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
@@ -133,6 +146,10 @@
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Employee1" Association="Self.FK_Order_Employee1">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
@@ -191,6 +208,10 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
+          <AssociationSet Name="FK_Order_Employee1" Association="StroyCompanyModel.FK_Order_Employee1">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
           <AssociationSet Name="FK_Order_TypeOreder" Association="StroyCompanyModel.FK_Order_TypeOreder">
             <End Role="TypeOreder" EntitySet="TypeOreder" />
             <End Role="Order" EntitySet="Order" />
@@ -222,6 +243,7 @@
           <NavigationProperty Name="Department" Relationship="StroyCompanyModel.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
           <NavigationProperty Name="Role" Relationship="StroyCompanyModel.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
           <NavigationProperty Name="Order" Relationship="StroyCompanyModel.FK_Order_Employee" FromRole="Employee" ToRole="Order" />
+          <NavigationProperty Name="Order1" Relationship="StroyCompanyModel.FK_Order_Employee1" FromRole="Employee" ToRole="Order" />
         </EntityType>
         <Association Name="FK_Employee_Department">
           <End Type="StroyCompanyModel.Department" Role="Department" Multiplicity="0..1" />
@@ -262,7 +284,9 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IsCompl" Type="Byte" />
+          <Property Name="Client_Id" Type="Int32" />
           <NavigationProperty Name="Employee" Relationship="StroyCompanyModel.FK_Order_Employee" FromRole="Order" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="StroyCompanyModel.FK_Order_Employee1" FromRole="Order" ToRole="Employee" />
           <NavigationProperty Name="TypeOreder" Relationship="StroyCompanyModel.FK_Order_TypeOreder" FromRole="Order" ToRole="TypeOreder" />
         </EntityType>
         <Association Name="FK_Order_Employee">
@@ -274,6 +298,18 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="Employee_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Employee1">
+          <End Type="StroyCompanyModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="StroyCompanyModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Client_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -351,6 +387,7 @@
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="StroyCompanyModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Client_Id" ColumnName="Client_Id" />
                 <ScalarProperty Name="IsCompl" ColumnName="IsCompl" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

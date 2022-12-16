@@ -25,8 +25,10 @@ namespace StroyCompany.Components
         public string Name { get; set; }
         public byte[] Image { get; set; }
         public Nullable<byte> IsCompl { get; set; }
+        public Nullable<int> Client_Id { get; set; }
     
         public virtual Employee Employee { get; set; }
+        public virtual Employee Employee1 { get; set; }
         public virtual TypeOreder TypeOreder { get; set; }
     }
 }
