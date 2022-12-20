@@ -18,20 +18,26 @@
             <TextBlock Margin="0 5 0 0 " FontSize="15">Поиск</TextBlock>
             <TextBox x:Name="TbSelected"  TextChanged="TbSelected_TextChanged" Margin="10 0 0 0" Width="200" Height="20"></TextBox>
             <StackPanel  Orientation="Horizontal" Margin="200 0 0 0" HorizontalAlignment="Right">
-                <Button x:Name="AddBt" Click="AddBt_Click" >Возстоновить</Button>
+                <Button x:Name="AddBt" Click="AddBt_Click" >Восстановить</Button>
             </StackPanel>
         </StackPanel>
         <ListView x:Name="LVEmployee" Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+
+                        <StackPanel Margin="20 20 0 0">
                         <TextBlock Text="{Binding Name, StringFormat='Имя: {0}'}" Foreground="Black" FontSize="15"/>
                         <TextBlock Text="{Binding Surname, StringFormat='Фамилия: {0}'}" Foreground="Black" FontSize="15"/>
                         <TextBlock Text="{Binding Login, StringFormat='Логин: {0}'}" Foreground="Black" FontSize="15" />
                         <TextBlock Text="{Binding Password, StringFormat='Пароль: {0}'}" Foreground="Black" FontSize="15" />
                         <TextBlock Text="{Binding Role.Name, StringFormat='Должность: {0}'}" Foreground="Black" FontSize="15" />
                         <TextBlock Text="{Binding Phone_number, StringFormat='Номер телефона: {0}'}" Foreground="Black" FontSize="15" />
-                        <Image Source="{Binding Image}" Width=" 200" Height="200"/>
+                       
+                    </StackPanel>
+                        <StackPanel Margin="20 0 0 0">
+                            <Image Source="{Binding Image}" Width=" 200" Height="200"/>
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

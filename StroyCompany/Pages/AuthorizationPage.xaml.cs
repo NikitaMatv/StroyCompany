@@ -32,7 +32,8 @@ namespace StroyCompany.Pages
 
         private void AutorBt_Click(object sender, RoutedEventArgs e)
         {
-            var employee = App.DB.Employee.FirstOrDefault(x => x.Login == TbLogin.Text && x.Password == TbPassword.Password);
+            var employee = App.DB.Employee.FirstOrDefault(x => x.Login == TbLogin.Text 
+            && x.Password == TbPassword.Password && x.IsDel !=1);
             if (employee == null)
             {
                 MessageBox.Show("Ошибка");
