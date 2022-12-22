@@ -1,4 +1,4 @@
-﻿<Page x:Class="StroyCompany.Pages.EmployeePage"
+﻿<Page x:Class="StroyCompany.Pages.ClientZap"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,28 +6,28 @@
       xmlns:local="clr-namespace:StroyCompany.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="EmployeePage">
+      Title="ClientZap">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="10*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock FontSize="30" HorizontalAlignment="Center" Grid.RowSpan="2"  Margin="-90 -90 0 0">Список сотрудников</TextBlock>
+        <TextBlock FontSize="30" HorizontalAlignment="Center" Grid.RowSpan="2"   Margin="-90 -90 0 0">Список учетных записей</TextBlock>
         <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
             <TextBlock Margin="20 5 0 0 " FontSize="15"  Foreground="White" FontWeight="Bold">Поиск</TextBlock>
             <TextBox x:Name="TbSelected"  TextChanged="TbSelected_TextChanged" Margin="10 0 0 0" Width="200" Height="20"></TextBox>
             <StackPanel  Orientation="Horizontal" Margin="200 0 0 0" HorizontalAlignment="Right">
                 <Button x:Name="AddBt" Click="AddBt_Click" Visibility="Collapsed">Добавить</Button>
                 <Button x:Name="RedBr" Click="RedBr_Click" Visibility="Collapsed">Редактировать</Button>
-                <Button x:Name="DelBt" Click="DelBt_Click" Visibility="Collapsed">Уволить</Button>
+                <Button x:Name="PotBt" Click="PotBt_Click"  Visibility="Collapsed">Подтвердить</Button>
             </StackPanel>
         </StackPanel>
-        <ListView x:Name="LVEmployee" Grid.Row="1" Width="800" HorizontalAlignment="Left">
+        <ListView x:Name="LVClient" Grid.Row="1" Width="800" HorizontalAlignment="Left">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      
+
                         <StackPanel VerticalAlignment="Center" Margin="20">
                             <TextBlock Text="{Binding Name, StringFormat='Имя: {0}'}" Foreground="Black" FontSize="15"/>
                             <TextBlock Text="{Binding Surname, StringFormat='Фамилия: {0}'}" Foreground="Black" FontSize="15"/>

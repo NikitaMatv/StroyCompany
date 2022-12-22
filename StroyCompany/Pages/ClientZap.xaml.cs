@@ -17,26 +17,24 @@ using System.Windows.Shapes;
 namespace StroyCompany.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ClientPage.xaml
+    /// Логика взаимодействия для ClientZap.xaml
     /// </summary>
-    public partial class ClientPage : Page
+    public partial class ClientZap : Page
     {
-        public ClientPage()
+        public ClientZap()
         {
             InitializeComponent();
             if (App.LoggedEmployee.Role_Id == 3)
             {
-                LVClient.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).Where(x => x.IsDel != 3).ToList();
-                AddBt.Visibility = Visibility.Visible;
-                RedBr.Visibility = Visibility.Visible;
-               
+                LVClient.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).Where(x => x.IsDel == 3).ToList();
+            
+                PotBt.Visibility = Visibility.Visible;
             }
             else
             {
-                LVClient.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).Where(x => x.IsDel != 3).ToList();
-                AddBt.Visibility = Visibility.Visible;
-                RedBr.Visibility = Visibility.Visible;
-             
+                LVClient.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).Where(x => x.IsDel == 3).ToList();
+               
+                PotBt.Visibility = Visibility.Visible;
             }
         }
         private void AddBt_Click(object sender, RoutedEventArgs e)
@@ -62,11 +60,11 @@ namespace StroyCompany.Pages
         {
             if (string.IsNullOrWhiteSpace(TbSelected.Text))
             {
-                LVClient.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).Where(x => x.IsDel != 3).ToList();
+                LVClient.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).Where(x => x.IsDel == 3).ToList();
             }
             else
             {
-                LVClient.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).Where(x => x.IsDel != 3).Where(a => a.Name.ToLower().Contains(TbSelected.Text.ToLower()) || a.Surname.ToLower().Contains(TbSelected.Text.ToLower())).ToList();
+                LVClient.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).Where(x => x.IsDel == 3).Where(a => a.Name.ToLower().Contains(TbSelected.Text.ToLower()) || a.Surname.ToLower().Contains(TbSelected.Text.ToLower())).ToList();
             }
 
         }
@@ -86,6 +84,9 @@ namespace StroyCompany.Pages
             }
             selectedclient.IsDel = null;
             App.DB.SaveChanges();
+            NavigationService.Navigate(new ClientZap());
         }
+
     }
+    
 }

@@ -47,6 +47,11 @@ namespace StroyCompany.Pages
         private void RedBr_Click(object sender, RoutedEventArgs e)
         {
             var selectedorder = LVEmployee.SelectedItem as Employee;
+            if (selectedorder == null)
+            {
+                MessageBox.Show("Выберете сотрудника");
+                return;
+            }
             NavigationService.Navigate(new EmployeeAddEdintPages(selectedorder));
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -68,6 +73,11 @@ namespace StroyCompany.Pages
         private void DelBt_Click(object sender, RoutedEventArgs e)
         {
             var selectedclient = LVEmployee.SelectedItem as Employee;
+            if (selectedclient == null)
+            {
+                MessageBox.Show("Выберете сотрудника");
+                return;
+            }
             if (selectedclient.Role_Id == 1)
             {
                 MessageBox.Show("Директора нельзя уволить");

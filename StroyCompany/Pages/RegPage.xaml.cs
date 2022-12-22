@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using StroyCompany.Components;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,33 +16,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.Win32;
-using StroyCompany.Components;
-using StroyCompany.Pages;
+
 namespace StroyCompany.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для EmployeeAddEdintPages.xaml
+    /// Логика взаимодействия для RegPage.xaml
     /// </summary>
-    public partial class EmployeeAddEdintPages : Page
+    public partial class RegPage : Page
     {
         Employee employeecontext;
-        public EmployeeAddEdintPages(Employee employee)
+        public RegPage(Employee employee)
         {
             InitializeComponent();
-            if(App.LoggedEmployee.Role_Id == 1)
-            {
-                CBRole.ItemsSource = App.DB.Role.ToList();
-            }
-            else
-            if(App.LoggedEmployee.Role_Id == 3)
-            {
-                CBRole.ItemsSource = App.DB.Role.Where(x => x.Id == 4).ToList();
-            }
-            else
-            {
-                CBRole.ItemsSource = App.DB.Role.Where(x => x.Id != 2 && x.Id !=1).ToList();
-            }
+            CBRole.ItemsSource = App.DB.Role.Where(x => x.Id == 2).ToList();
             employeecontext = employee;
             DataContext = employeecontext;
         }
@@ -48,17 +36,13 @@ namespace StroyCompany.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var erormasage = "";
-         if(TbLogin.Text == "")
+            if (TbLogin.Text == "")
             {
                 erormasage += "Заполните логин \n";
             }
             if (TbPassword.Text == "")
             {
                 erormasage += "Заполните Пароль \n";
-            }
-            if (App.DB.Employee.FirstOrDefault(x => x.Password == TbPassword.Text && x.Login == TbLogin.Text) != null)
-            {
-                erormasage += "Такой пользователь уже есть \n";
             }
             if (TbMeddle_name.Text == "")
             {
@@ -67,6 +51,10 @@ namespace StroyCompany.Pages
             if (TbName.Text == "")
             {
                 erormasage += "Заполните имя \n";
+            }
+            if (App.DB.Employee.FirstOrDefault(x => x.Password == TbPassword.Text && x.Login == TbLogin.Text) != null)
+            {
+                erormasage += "Такой пользователь уже есть \n";
             }
             if (TbPhone_number.Text == "")
             {
@@ -78,14 +66,23 @@ namespace StroyCompany.Pages
             }
             if (erormasage == "")
             {
-
+                if (App.LoggedEmployee == null)
+                {
+                    employeecontext.IsDel = 3;
+                    employeecontext.Balance = 0;
+                }
 
                 if (employeecontext.Id == 0)
                 {
                     App.DB.Employee.Add(employeecontext);
                 }
                 App.DB.SaveChanges();
-                NavigationService.Navigate(new EmployeePage());
+                if (App.LoggedEmployee == null)
+                {
+                    NavigationService.Navigate(new AuthorizationPage());
+                }
+                else
+                    NavigationService.Navigate(new ClientPage());
             }
             else
             {
@@ -102,7 +99,6 @@ namespace StroyCompany.Pages
                 DataContext = employeecontext;
             }
         }
-
         private void TbName_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (Regex.IsMatch(e.Text, @"[A-zА-я]") == false)

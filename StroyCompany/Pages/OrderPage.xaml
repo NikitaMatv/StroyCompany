@@ -15,30 +15,46 @@
         </Grid.RowDefinitions>
         <TextBlock FontSize="30" HorizontalAlignment="Center" Margin="-90 -90 0 0">Список заказов</TextBlock>
         <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
-            <TextBlock Margin="0 5 0 0 " FontSize="15">Поиск</TextBlock>
-            <TextBox x:Name="TbSelected"  TextChanged="TbSelected_TextChanged" Margin="10 0 0 0" Width="200" Height="20"></TextBox>
-            <StackPanel  Orientation="Horizontal" Margin="200 0 0 0" HorizontalAlignment="Right">
+            <TextBlock Margin="20 5 0 0 " FontSize="15"  Foreground="White" FontWeight="Bold">Поиск</TextBlock>
+            <TextBox x:Name="TbSelected"  TextChanged="TbSelected_TextChanged" Margin="10 0 0 0"  Width="200" Height="20"></TextBox>
+            <Border CornerRadius="20" Margin="5 0 0 0" Background="LightGray" Width="auto" >
+                <StackPanel x:Name="SpBal" Margin="5 5 5 5" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="Collapsed" Width="auto" Height="8500" Background="LightGray" >
+
+                    <TextBlock Margin="5 0 0 0"  FontSize="15"  Text="Ваш баланс: "></TextBlock>
+                    <TextBlock  FontSize="15" x:Name="TbBalan" ></TextBlock>
+                    <TextBlock  FontSize="15"  Text=" рублей "></TextBlock>
+
+                </StackPanel>
+            </Border>
+            
+            <StackPanel  Orientation="Horizontal" Margin="5 0 0 0" HorizontalAlignment="Right">
+                <ComboBox x:Name="CbSort" Width="120" SelectionChanged="CbSort_SelectionChanged"  Height="25">
+                    <ComboBoxItem>Все</ComboBoxItem>
+                    <ComboBoxItem>Оплаченые</ComboBoxItem>
+                    <ComboBoxItem>Не оплаченые</ComboBoxItem>
+                </ComboBox>
                 <Button x:Name="AddBt" Click="AddBt_Click" Visibility="Collapsed">Добавить</Button>
                 <Button x:Name="RedBr" Click="RedBr_Click" Visibility="Collapsed">Редактировать</Button>
                 <Button x:Name="DelBt" Click="DelBt_Click" Visibility="Collapsed">Выполнен</Button>
+                <Button x:Name="OplBt" Click="OplBt_Click" Visibility="Collapsed">Оплатить</Button>
             </StackPanel>
         </StackPanel>
-        <ListView x:Name="LVOrder" Grid.Row="1">
+        <ListView x:Name="LVOrder" Grid.Row="1" Width="800" HorizontalAlignment="Left" >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                       
-                        <StackPanel VerticalAlignment="Center" Margin="20">
+                    <StackPanel Orientation="Horizontal" Background="{Binding Color}" Width="700">
+                        <StackPanel>
+                            <Image Source="{Binding Image}" VerticalAlignment="Center" Width="105" Height="105"/>
+                        </StackPanel>
+                        <StackPanel VerticalAlignment="Center" Margin="10">
                         <TextBlock Text="{Binding Name, StringFormat='Название: {0}'}" Foreground="Black" FontSize="15"/>
                         <TextBlock Text="{Binding Address, StringFormat='Адрес: {0}'}" Foreground="Black" FontSize="15"/>
                         <TextBlock Text="{Binding Date, StringFormat='Дата заказа: dd.MM.yyyy'}" Foreground="Black" FontSize="15" />
                         <TextBlock Text="{Binding Description, StringFormat='Описание: {0}'}" Foreground="Black" FontSize="15" />
                         <TextBlock Text="{Binding Type_Id.Name, StringFormat='Вид работ: {0}'}" Foreground="Black" FontSize="15" />
                         
-                    </StackPanel>
-                        <StackPanel>
-                            <Image Source="{Binding Image}" Width=" 200" Height="200"/>
                         </StackPanel>
+                        
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

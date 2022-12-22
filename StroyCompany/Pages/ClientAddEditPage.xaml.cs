@@ -36,23 +36,27 @@ namespace StroyCompany.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var erormasage = "";
-            if (TbLogin == null)
+            if (TbLogin.Text == "")
             {
                 erormasage += "Заполните логин \n";
             }
-            if (TbPassword == null)
+            if (TbPassword.Text == "")
             {
                 erormasage += "Заполните Пароль \n";
             }
-            if (TbMeddle_name == null)
+            if (TbMeddle_name.Text == "")
             {
                 erormasage += "Заполните отчество \n";
             }
-            if (TbName == null)
+            if (TbName.Text == "")
             {
                 erormasage += "Заполните имя \n";
             }
-            if (TbPhone_number == null)
+            if (App.DB.Employee.FirstOrDefault(x => x.Password == TbPassword.Text && x.Login == TbLogin.Text) != null)
+            {
+                erormasage += "Такой пользователь уже есть \n";
+            }
+            if (TbPhone_number.Text == "")
             {
                 erormasage += "Заполните телефон \n";
             }
@@ -60,12 +64,29 @@ namespace StroyCompany.Pages
             {
                 erormasage += "Выберите роль \n";
             }
-            if(employeecontext.Id == 0)
+            if (erormasage == "")
             {
-                App.DB.Employee.Add(employeecontext);
+                if (App.LoggedEmployee == null)
+                {
+                    employeecontext.IsDel = 3;
+                    employeecontext.Balance = 0;
+                }
+
+                    if (employeecontext.Id == 0)
+                {
+                    App.DB.Employee.Add(employeecontext);
+                }
+                App.DB.SaveChanges();
+                if(App.LoggedEmployee == null)
+                {
+                    NavigationService.Navigate(new AuthorizationPage());
+                }else
+                NavigationService.Navigate(new ClientPage());
             }
-            App.DB.SaveChanges();
-            NavigationService.GoBack();
+            else
+            {
+                MessageBox.Show(erormasage);
+            }
         }
         private void BtImage_Click(object sender, RoutedEventArgs e)
         {
@@ -91,6 +112,11 @@ namespace StroyCompany.Pages
             {
                 e.Handled = true;
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

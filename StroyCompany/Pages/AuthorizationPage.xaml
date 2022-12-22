@@ -9,14 +9,22 @@
       Title="AuthorizationPage">
 
     <Grid>
-        <TextBlock FontSize="30" HorizontalAlignment="Center" Margin="-90">Авторизация</TextBlock>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock>Логин</TextBlock>
-            <TextBox x:Name="TbLogin" Width="150"></TextBox>
-            <TextBlock>Пароль</TextBlock>
-            <PasswordBox x:Name="TbPassword" Width="150"></PasswordBox>
-            <CheckBox x:Name="SaveCb" IsChecked="True" Margin="7">Запомнить меня</CheckBox>
-            <Button x:Name="AutorBt" Click="AutorBt_Click">Войти</Button>
+        
+                <TextBlock FontSize="30" HorizontalAlignment="Center"  Margin="120 -90 0 0" >Авторизация</TextBlock>
+        <Border CornerRadius="100" Margin="100 -5 0 0" Background="LightGray"  HorizontalAlignment="Center" Height="300" Width="400">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock FontSize="15">Логин</TextBlock>
+                <TextBox x:Name="TbLogin" Width="150" FontSize="15"></TextBox>
+            <TextBlock FontSize="15">Пароль</TextBlock>
+                <PasswordBox x:Name="TbPassword" Width="150" FontSize="15"></PasswordBox>
+                <CheckBox x:Name="SaveCb" IsChecked="True" Margin="7" FontSize="15">Запомнить меня</CheckBox>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="AutorBt" Click="AutorBt_Click" Width="70">Войти</Button>
+                <Button x:Name="Regist" Click="Regist_Click" Width="100">Регистрация</Button>
+            </StackPanel>
+      
         </StackPanel>
+        </Border>
+        
     </Grid>
 </Page>

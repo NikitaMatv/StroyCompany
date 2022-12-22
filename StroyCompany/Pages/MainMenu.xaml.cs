@@ -23,6 +23,7 @@ namespace StroyCompany.Pages
         public MainMenu()
         {
             InitializeComponent();
+           
             if (App.LoggedEmployee.Role_Id == 1)
             {
 
@@ -31,11 +32,15 @@ namespace StroyCompany.Pages
                 BtOrder.Visibility = Visibility.Visible;
                 BtOrderCompl.Visibility = Visibility.Visible;
                 BtEmployeeDel.Visibility = Visibility.Visible;
+                BtClientZap.Visibility = Visibility.Visible;
+                MenuFrame.Navigate(new OrderPage());
             }
             if (App.LoggedEmployee.Role_Id == 2)
             {
                 BtOrder.Visibility = Visibility.Visible;
                 BtOrderCompl.Visibility = Visibility.Visible;
+                BtBalanth.Visibility = Visibility.Visible;
+               
                 MenuFrame.Navigate(new OrderPage());
             }
             if (App.LoggedEmployee.Role_Id == 3)
@@ -43,6 +48,7 @@ namespace StroyCompany.Pages
                 BtEmployee.Visibility = Visibility.Visible;
                 BtClient.Visibility = Visibility.Visible;
                 BtEmployeeDel.Visibility = Visibility.Visible;
+                BtClientZap.Visibility = Visibility.Visible;
                 MenuFrame.Navigate(new EmployeePage());
             }
             if (App.LoggedEmployee.Role_Id == 4)
@@ -77,6 +83,24 @@ namespace StroyCompany.Pages
         private void BtEmployeeDel_Click(object sender, RoutedEventArgs e)
         {
             MenuFrame.Navigate(new EmployeeDelPage());
+        }
+
+
+        private void BtOut_Click_1(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AuthorizationPage());
+            App.LoggedEmployee = null;
+
+        }
+
+        private void BtBalanth_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Balace());
+        }
+
+        private void BtClientZap_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFrame.Navigate(new ClientZap());
         }
     }
 }

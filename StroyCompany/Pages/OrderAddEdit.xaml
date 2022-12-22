@@ -10,30 +10,36 @@
 
     <Grid>
         <TextBlock FontSize="30" HorizontalAlignment="Center" Margin="-90 -90 0 0">Заказ</TextBlock>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock  >Название</TextBlock>
-            <TextBox Text="{Binding Name}"  x:Name="TbName" Width="200"></TextBox>
-            <TextBlock  >Адрес</TextBlock>
-            <TextBox Text="{Binding Address}"  x:Name="TbAdress" Width="200"></TextBox>
-            <TextBlock  >Дата заказа</TextBlock>
-            <DatePicker  SelectedDate="{Binding Date}"  Width="200"></DatePicker>
-            <TextBlock  x:Name="TbDiscription"  >Описание</TextBlock>
-            <TextBox Text="{Binding Description}" Width="200"></TextBox>
-            <TextBlock  >Вид работ</TextBlock>
-            <ComboBox x:Name="CbTypes" SelectedItem="{Binding TypeOreder}" DisplayMemberPath="Name" />
-            <TextBlock  x:Name="TbPrise">Цена</TextBlock>
-                <TextBox Text="{Binding Price}"  PreviewTextInput="TextBox_PreviewTextInput"  Width="200"></TextBox>
-            <TextBlock  >Сотрудник</TextBlock>
-            <ComboBox x:Name="CbEmployee" SelectedItem="{Binding Employee}" DisplayMemberPath="Name"/>
-                <TextBlock Visibility="Hidden" x:Name="Client" >Клиент</TextBlock>
-                <ComboBox x:Name="CbClient" Visibility="Hidden"  SelectedItem="{Binding Employee}" DisplayMemberPath="Name"/>
-                <Button Click="Button_Click">Сохранить</Button>
-        </StackPanel>
-        <StackPanel VerticalAlignment="Center" Margin="50">
-                <Image Source="{Binding Image}" Width=" 200" Height="200"/>
-                <Button x:Name="BtImage" Click="BtImage_Click" BorderBrush="Black" Background="LightYellow"> добавить фото</Button>
-        </StackPanel>
-        </StackPanel>
+        <Border CornerRadius="100" Margin="50 -5 0 0" Background="LightGray"  HorizontalAlignment="Left" Height="auto" Width="650">
+            <StackPanel>
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin=" 40 0 0 0">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock  >Название</TextBlock>
+                        <TextBox Text="{Binding Name}"  x:Name="TbName" Width="200"></TextBox>
+                        <TextBlock  >Адрес</TextBlock>
+                        <TextBox Text="{Binding Address}"  x:Name="TbAdress" Width="200"></TextBox>
+                        <TextBlock  >Дата заказа</TextBlock>
+                        <DatePicker x:Name="DpDate"  SelectedDate="{Binding Date}"  Width="200"></DatePicker>
+                        <TextBlock  x:Name="TbDiscription"  >Описание</TextBlock>
+                        <TextBox Text="{Binding Description}" Width="200"></TextBox>
+                        <TextBlock  >Вид работ</TextBlock>
+                        <ComboBox x:Name="CbTypes" SelectedItem="{Binding TypeOreder}" DisplayMemberPath="Name" />
+                        <TextBlock  >Цена</TextBlock>
+                        <TextBox x:Name="TbPrise" Text="{Binding Price}"  PreviewTextInput="TextBox_PreviewTextInput"  Width="200"></TextBox>
+                        <TextBlock  >Сотрудник</TextBlock>
+                        <ComboBox x:Name="CbEmployee" SelectedItem="{Binding Employee}" DisplayMemberPath="Name"/>
+                        <TextBlock Visibility="Hidden" x:Name="Client" >Клиент</TextBlock>
+                        <ComboBox x:Name="CbClient" Visibility="Hidden"  SelectedItem="{Binding Employee}" DisplayMemberPath="Name"/>
+                        <Button Click="Button_Click">Сохранить</Button>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Center" Margin="50">
+                        <Image Source="{Binding Image}" Width=" 200" Height="200"/>
+                        <Button x:Name="BtImage" Click="BtImage_Click" BorderBrush="Black" Background="LightYellow">добавить фото</Button>
+                    </StackPanel>
+                </StackPanel>
+                <Button Click="Button_Click_1" Width="400">Отмена</Button>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>

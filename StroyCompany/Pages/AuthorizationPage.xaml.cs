@@ -33,7 +33,7 @@ namespace StroyCompany.Pages
         private void AutorBt_Click(object sender, RoutedEventArgs e)
         {
             var employee = App.DB.Employee.FirstOrDefault(x => x.Login == TbLogin.Text 
-            && x.Password == TbPassword.Password && x.IsDel !=1);
+            && x.Password == TbPassword.Password && x.IsDel !=1 && x.IsDel !=3);
             if (employee == null)
             {
                 MessageBox.Show("Ошибка");
@@ -53,6 +53,11 @@ namespace StroyCompany.Pages
             }
             App.LoggedEmployee = employee;
             NavigationService.Navigate(new MainMenu());          
+        }
+
+        private void Regist_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RegPage(new Employee()));
         }
     }
 }

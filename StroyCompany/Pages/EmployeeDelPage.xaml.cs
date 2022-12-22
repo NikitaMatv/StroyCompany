@@ -24,7 +24,7 @@ namespace StroyCompany.Pages
         public EmployeeDelPage()
         {
             InitializeComponent();
-            LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id != 4).Where(x => x.IsDel == 1).ToList();
+            LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id != 2).Where(x => x.IsDel == 1).ToList();
         }
 
         private void AddBt_Click(object sender, RoutedEventArgs e)
@@ -32,7 +32,7 @@ namespace StroyCompany.Pages
             var selectedclient = LVEmployee.SelectedItem as Employee;
             selectedclient.IsDel = null;
             App.DB.SaveChanges();
-            LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id != 4).Where(x => x.IsDel == 1).ToList();
+            LVEmployee.ItemsSource = App.DB.Employee.Where(x => x.Role_Id != 2).Where(x => x.IsDel == 1).ToList();
 
         }
         private void TbSelected_TextChanged(object sender, TextChangedEventArgs e)

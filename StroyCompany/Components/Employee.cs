@@ -32,6 +32,7 @@ namespace StroyCompany.Components
         public Nullable<int> Role_Id { get; set; }
         public byte[] Image { get; set; }
         public Nullable<byte> IsDel { get; set; }
+        public Nullable<int> Balance { get; set; }
     
         public virtual Department Department { get; set; }
         public virtual Role Role { get; set; }

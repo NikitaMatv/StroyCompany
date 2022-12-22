@@ -9,29 +9,34 @@
       Title="ClientAddEditPage">
 
     <Grid>
-        <TextBlock FontSize="30" HorizontalAlignment="Center"  Margin="-90 -90 0 0">Сотрудник</TextBlock>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock>Имя</TextBlock>
-                <TextBox  x:Name="TbName" PreviewTextInput="TbName_PreviewTextInput"  Text="{Binding Name}" Width="200"></TextBox>
-            <TextBlock  >Фамилия</TextBlock>
-                <TextBox  x:Name="TbSurname" PreviewTextInput="TbName_PreviewTextInput" Text="{Binding Surname}" Width="200"></TextBox>
-            <TextBlock >Отчество</TextBlock>
-                <TextBox  x:Name="TbMeddle_name" PreviewTextInput="TbName_PreviewTextInput" Width="200" Text="{Binding Meddle_name}"></TextBox>
-            <TextBlock >Номер телефона</TextBlock>
-            <TextBox  x:Name="TbPhone_number" MaxLength="11" PreviewTextInput="TbPhone_number_PreviewTextInput"  Width="200" Text="{Binding Phone_number}"></TextBox>
-            <TextBlock>Должность</TextBlock>
-            <ComboBox x:Name="CBRole" Width="200" DisplayMemberPath="Name" SelectedItem="{Binding Role}"></ComboBox>
-            <TextBlock >Логин</TextBlock>
-            <TextBox  x:Name="TbLogin" Width="200" Text="{Binding Login}"></TextBox>
-            <TextBlock >Пароль</TextBlock>
-            <TextBox  x:Name="TbPassword" Width="200" Text="{Binding Password}"></TextBox>
-            <Button Click="Button_Click">Сохранить</Button>
-        </StackPanel>
-        <StackPanel VerticalAlignment="Center" Margin="50">
-            <Image Source="{Binding Image}" Width=" 200" Height="200"/>
-            <Button x:Name="BtImage" Click="BtImage_Click">добавить фото</Button>
-        </StackPanel>
-        </StackPanel>
+        <Border CornerRadius="100" Margin="90 -5 0 0" Background="LightGray"  HorizontalAlignment="Left" Height="auto" Width="600">
+            <StackPanel>
+                <TextBlock FontSize="30" HorizontalAlignment="Center"  Margin="-90 -90 0 0">Клиент</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="40 0 0 0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock>Имя</TextBlock>
+                    <TextBox  x:Name="TbName" PreviewTextInput="TbName_PreviewTextInput"  Text="{Binding Name}" Width="200"></TextBox>
+                    <TextBlock  >Фамилия</TextBlock>
+                    <TextBox  x:Name="TbSurname" PreviewTextInput="TbName_PreviewTextInput" Text="{Binding Surname}" Width="200"></TextBox>
+                    <TextBlock >Отчество</TextBlock>
+                    <TextBox  x:Name="TbMeddle_name" PreviewTextInput="TbName_PreviewTextInput" Width="200" Text="{Binding Meddle_name}"></TextBox>
+                    <TextBlock >Номер телефона</TextBlock>
+                    <TextBox  x:Name="TbPhone_number" MaxLength="11" PreviewTextInput="TbPhone_number_PreviewTextInput"  Width="200" Text="{Binding Phone_number}"></TextBox>
+                    <TextBlock>Должность</TextBlock>
+                    <ComboBox x:Name="CBRole" Width="200" DisplayMemberPath="Name" SelectedItem="{Binding Role}"></ComboBox>
+                    <TextBlock >Логин</TextBlock>
+                    <TextBox  x:Name="TbLogin" Width="200" Text="{Binding Login}"></TextBox>
+                    <TextBlock >Пароль</TextBlock>
+                    <TextBox  x:Name="TbPassword" Width="200" Text="{Binding Password}"></TextBox>
+                    <Button Click="Button_Click">Сохранить</Button>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center" Margin="50">
+                    <Image Source="{Binding Image}" Width=" 200" Height="200"/>
+                    <Button x:Name="BtImage" Click="BtImage_Click">добавить фото</Button>
+                </StackPanel>
+            </StackPanel>
+                <Button Click="Button_Click_1" Width="400">Отмена</Button>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>

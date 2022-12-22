@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:StroyCompany.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainMenu">
+      Title="MainMenu"
+     >
 
     <Grid>
        
@@ -18,14 +19,20 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0">
+            <Button x:Name="BtOut" Click="BtOut_Click_1" Margin="0 -120 -1800 0" Width="100" Height="40">Выход</Button>
             <Button x:Name="BtOrder" Click="BtOrder_Click" Visibility="Collapsed">Список заказов</Button>
             <Button x:Name="BtEmployee" Click="BtEmployee_Click" Visibility="Collapsed">Список сотрудников</Button>
             <Button x:Name="BtClient" Click="BtClient_Click" Visibility="Collapsed">Список клиентов</Button>
+            <Button x:Name="BtClientZap" Click="BtClientZap_Click" Visibility="Collapsed">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" >Список на подтверждение учётной записи</TextBlock>
+            </Button>
             <Button x:Name="BtOrderCompl" Click="BtOreerCompl_Click" Visibility="Collapsed">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" >Список выполненных заказов</TextBlock></Button>
             <Button x:Name="BtEmployeeDel" Click="BtEmployeeDel_Click" Visibility="Collapsed">
                 <TextBlock TextWrapping="Wrap " TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" >Список уволенных сотрудников</TextBlock>
-            </Button> 
+            </Button>
+           
+            <Button x:Name="BtBalanth" Visibility="Collapsed" Click="BtBalanth_Click">Пополнить</Button>
         </StackPanel>
         <Frame Grid.Column="1" x:Name="MenuFrame"></Frame>
     </Grid>

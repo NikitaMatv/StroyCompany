@@ -28,6 +28,7 @@
           <Property Name="Role_Id" Type="int" />
           <Property Name="Image" Type="image" />
           <Property Name="IsDel" Type="tinyint" />
+          <Property Name="Balance" Type="int" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -194,6 +195,11 @@
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TypeOreder" EntityType="StroyCompanyModel.TypeOreder" />
+          <EntitySet Name="Order" EntityType="StroyCompanyModel.Order" />
+          <AssociationSet Name="FK_Order_TypeOreder" Association="StroyCompanyModel.FK_Order_TypeOreder">
+            <End Role="TypeOreder" EntitySet="TypeOreder" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
           <EntitySet Name="Employee" EntityType="StroyCompanyModel.Employee" />
           <AssociationSet Name="FK_Employee_Department" Association="StroyCompanyModel.FK_Employee_Department">
             <End Role="Department" EntitySet="Department" />
@@ -203,17 +209,12 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
-          <EntitySet Name="Order" EntityType="StroyCompanyModel.Order" />
           <AssociationSet Name="FK_Order_Employee" Association="StroyCompanyModel.FK_Order_Employee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Employee1" Association="StroyCompanyModel.FK_Order_Employee1">
             <End Role="Employee" EntitySet="Employee" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_TypeOreder" Association="StroyCompanyModel.FK_Order_TypeOreder">
-            <End Role="TypeOreder" EntitySet="TypeOreder" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           </EntityContainer>
@@ -225,6 +226,38 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Order" Relationship="StroyCompanyModel.FK_Order_TypeOreder" FromRole="TypeOreder" ToRole="Order" />
         </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Square" Type="Int32" />
+          <Property Name="Type_Id" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Employee_Id" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsCompl" Type="Byte" />
+          <Property Name="Client_Id" Type="Int32" />
+          <NavigationProperty Name="TypeOreder" Relationship="StroyCompanyModel.FK_Order_TypeOreder" FromRole="Order" ToRole="TypeOreder" />
+          <NavigationProperty Name="Employee" Relationship="StroyCompanyModel.FK_Order_Employee" FromRole="Order" ToRole="Employee" />
+          <NavigationProperty Name="Employee1" Relationship="StroyCompanyModel.FK_Order_Employee1" FromRole="Order" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_Order_TypeOreder">
+          <End Type="StroyCompanyModel.TypeOreder" Role="TypeOreder" Multiplicity="0..1" />
+          <End Type="StroyCompanyModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOreder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="Id" />
@@ -240,6 +273,7 @@
           <Property Name="Role_Id" Type="Int32" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IsDel" Type="Byte" />
+          <Property Name="Balance" Type="Int32" />
           <NavigationProperty Name="Department" Relationship="StroyCompanyModel.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
           <NavigationProperty Name="Role" Relationship="StroyCompanyModel.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
           <NavigationProperty Name="Order" Relationship="StroyCompanyModel.FK_Order_Employee" FromRole="Employee" ToRole="Order" />
@@ -269,26 +303,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
-          <Property Name="Price" Type="Int32" />
-          <Property Name="Square" Type="Int32" />
-          <Property Name="Type_Id" Type="Int32" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Employee_Id" Type="Int32" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="IsCompl" Type="Byte" />
-          <Property Name="Client_Id" Type="Int32" />
-          <NavigationProperty Name="Employee" Relationship="StroyCompanyModel.FK_Order_Employee" FromRole="Order" ToRole="Employee" />
-          <NavigationProperty Name="Employee1" Relationship="StroyCompanyModel.FK_Order_Employee1" FromRole="Order" ToRole="Employee" />
-          <NavigationProperty Name="TypeOreder" Relationship="StroyCompanyModel.FK_Order_TypeOreder" FromRole="Order" ToRole="TypeOreder" />
-        </EntityType>
         <Association Name="FK_Order_Employee">
           <End Type="StroyCompanyModel.Employee" Role="Employee" Multiplicity="0..1" />
           <End Type="StroyCompanyModel.Order" Role="Order" Multiplicity="*" />
@@ -310,18 +324,6 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="Client_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_TypeOreder">
-          <End Type="StroyCompanyModel.TypeOreder" Role="TypeOreder" Multiplicity="0..1" />
-          <End Type="StroyCompanyModel.Order" Role="Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TypeOreder">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="Type_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -367,23 +369,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Employee">
-            <EntityTypeMapping TypeName="StroyCompanyModel.Employee">
-              <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
-                <ScalarProperty Name="Phone_number" ColumnName="Phone_number" />
-                <ScalarProperty Name="Meddle_name" ColumnName="Meddle_name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="StroyCompanyModel.Order">
               <MappingFragment StoreEntitySet="Order">
@@ -398,6 +383,24 @@
                 <ScalarProperty Name="Square" ColumnName="Square" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="StroyCompanyModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+                <ScalarProperty Name="Phone_number" ColumnName="Phone_number" />
+                <ScalarProperty Name="Meddle_name" ColumnName="Meddle_name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -39,37 +39,58 @@ namespace StroyCompany.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string errorMessage = "";
-            if (string.IsNullOrWhiteSpace(ordercontext.Name))
+            if (TbName.Text == "")
             {
                 errorMessage += "Введите название\n";
             }
-            if (string.IsNullOrWhiteSpace(ordercontext.Address))
+            if (TbAdress.Text == "")
             {
                 errorMessage += "Введите адрес\n";
             }
-            if (ordercontext.Date == null)
+            if (DpDate.SelectedDate == null)
             {
                 errorMessage += "Введите дату\n";
             }
-            if (ordercontext.Description == null)
+            if (TbDiscription.Text == "")
             {
                 errorMessage += "Введите описание\n";
             }
-            if (ordercontext.Price == null || ordercontext.Price <= 0)
+            if (TbPrise.Text == "")
             {
                 errorMessage += "Введите цену\n";
+            }
+            if (TbPrise.Text.StartsWith("0"))
+            {
+                errorMessage += "Введите коректную цену\n";
+            }
+            if (CbTypes.SelectedItem == null)
+            {
+                errorMessage += "Выберете тип работ\n";
+            }
+            if (CbEmployee.SelectedItem == null)
+            {
+                errorMessage += "Выберете отвецтвенного работника\n";
             }
             if (string.IsNullOrWhiteSpace(errorMessage) == false)
             {
                 MessageBox.Show(errorMessage);
                 return;
             }
-            if (ordercontext.Id == 0)
+            if (errorMessage == "")
             {
-                App.DB.Order.Add(ordercontext);
+
+
+                if (ordercontext.Id == 0)
+                {
+                    App.DB.Order.Add(ordercontext);
+                }
+                App.DB.SaveChanges();
+                NavigationService.Navigate(new OrderPage());
             }
-            App.DB.SaveChanges();
-            NavigationService.GoBack();
+            else
+            {
+                MessageBox.Show(errorMessage);
+            }
         }
 
         private void BtImage_Click(object sender, RoutedEventArgs e)
@@ -90,6 +111,11 @@ namespace StroyCompany.Pages
             {
                 e.Handled = true;
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

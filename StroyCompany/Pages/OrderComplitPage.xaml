@@ -15,10 +15,10 @@
         </Grid.RowDefinitions>
         <TextBlock FontSize="30" HorizontalAlignment="Center" Margin="-90 -90 0 0">Список выполненных заказов</TextBlock>
         <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
-            <TextBlock Margin="0 0 0 0 " FontSize="15">Поиск</TextBlock>
+            <TextBlock Margin="20 -3 0 0 " FontSize="15"  Foreground="White" FontWeight="Bold">Поиск</TextBlock>
             <TextBox x:Name="TbSelected"  TextChanged="TbSelected_TextChanged" Margin="10 0 0 0" Width="200" Height="20"></TextBox>
         </StackPanel>
-        <ListView x:Name="LVOrder" Grid.Row="1">
+        <ListView x:Name="LVOrder" Grid.Row="1" Width="800" HorizontalAlignment="Left">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

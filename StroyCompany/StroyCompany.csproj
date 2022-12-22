@@ -81,6 +81,7 @@
     <Compile Include="Components\Order.cs">
       <DependentUpon>StroyCompany.tt</DependentUpon>
     </Compile>
+    <Compile Include="Components\PartialClass\Order.cs" />
     <Compile Include="Components\Role.cs">
       <DependentUpon>StroyCompany.tt</DependentUpon>
     </Compile>
@@ -113,11 +114,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Balace.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ClientAddEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ClientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ClientZap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,16 +158,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\RegPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Balace.xaml.cs">
+      <DependentUpon>Balace.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ClientAddEditPage.xaml.cs">
       <DependentUpon>ClientAddEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ClientPage.xaml.cs">
       <DependentUpon>ClientPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ClientZap.xaml.cs">
+      <DependentUpon>ClientZap.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\EmployeeAddEdintPages.xaml.cs">
       <DependentUpon>EmployeeAddEdintPages.xaml</DependentUpon>
@@ -180,6 +199,9 @@
     </Compile>
     <Compile Include="Pages\OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegPage.xaml.cs">
+      <DependentUpon>RegPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -232,6 +254,7 @@
       <DependentUpon>StroyCompany.edmx</DependentUpon>
       <LastGenOutput>StroyCompany.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resource\Lent.jpg" />
     <Resource Include="Resource\LOGO.png" />
     <Resource Include="Resource\Image.jpg" />
   </ItemGroup>
