@@ -18,7 +18,7 @@
             </ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0">
+        <StackPanel Grid.Column="0" Margin="5 30 5 0">
             <Button x:Name="BtOut" Click="BtOut_Click_1" Margin="0 -120 -1800 0" Width="100" Height="40">Выход</Button>
             <Button x:Name="BtOrder" Click="BtOrder_Click" Visibility="Collapsed">Список заказов</Button>
             <Button x:Name="BtEmployee" Click="BtEmployee_Click" Visibility="Collapsed">Список сотрудников</Button>

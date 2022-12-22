@@ -13,7 +13,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="10*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock FontSize="30" HorizontalAlignment="Center" Grid.RowSpan="2"   Margin="-90 -90 0 0">Список учетных записей</TextBlock>
+        <TextBlock FontSize="30" HorizontalAlignment="Center" Grid.RowSpan="2"   Margin="-90 -90 0 0">Продтверждение уч. записей</TextBlock>
         <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
             <TextBlock Margin="20 5 0 0 " FontSize="15"  Foreground="White" FontWeight="Bold">Поиск</TextBlock>
             <TextBox x:Name="TbSelected"  TextChanged="TbSelected_TextChanged" Margin="10 0 0 0" Width="200" Height="20"></TextBox>

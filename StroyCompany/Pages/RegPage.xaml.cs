@@ -66,23 +66,19 @@ namespace StroyCompany.Pages
             }
             if (erormasage == "")
             {
-                if (App.LoggedEmployee == null)
-                {
+            
                     employeecontext.IsDel = 3;
                     employeecontext.Balance = 0;
-                }
+         
 
-                if (employeecontext.Id == 0)
-                {
+               
                     App.DB.Employee.Add(employeecontext);
-                }
+                
                 App.DB.SaveChanges();
-                if (App.LoggedEmployee == null)
-                {
+             
                     NavigationService.Navigate(new AuthorizationPage());
-                }
-                else
-                    NavigationService.Navigate(new ClientPage());
+                
+               
             }
             else
             {

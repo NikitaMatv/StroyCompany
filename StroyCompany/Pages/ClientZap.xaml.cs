@@ -26,13 +26,13 @@ namespace StroyCompany.Pages
             InitializeComponent();
             if (App.LoggedEmployee.Role_Id == 3)
             {
-                LVClient.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).Where(x => x.IsDel == 3).ToList();
+                LVClient.ItemsSource = App.DB.Employee.Where(x => x.IsDel == 3).ToList();
             
                 PotBt.Visibility = Visibility.Visible;
             }
             else
             {
-                LVClient.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).Where(x => x.IsDel == 3).ToList();
+                LVClient.ItemsSource = App.DB.Employee.Where(x => x.IsDel == 3).ToList();
                
                 PotBt.Visibility = Visibility.Visible;
             }
@@ -60,11 +60,11 @@ namespace StroyCompany.Pages
         {
             if (string.IsNullOrWhiteSpace(TbSelected.Text))
             {
-                LVClient.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).Where(x => x.IsDel == 3).ToList();
+                LVClient.ItemsSource = App.DB.Employee.Where(x => x.IsDel == 3).ToList();
             }
             else
             {
-                LVClient.ItemsSource = App.DB.Employee.Where(x => x.Role_Id == 2).Where(x => x.IsDel == 3).Where(a => a.Name.ToLower().Contains(TbSelected.Text.ToLower()) || a.Surname.ToLower().Contains(TbSelected.Text.ToLower())).ToList();
+                LVClient.ItemsSource = App.DB.Employee.Where(x => x.IsDel == 3).Where(a => a.Name.ToLower().Contains(TbSelected.Text.ToLower()) || a.Surname.ToLower().Contains(TbSelected.Text.ToLower())).ToList();
             }
 
         }
